@@ -60,4 +60,5 @@ This project involves MySQL and Power BI analysis to delve into employee attriti
 
 ### About the Dashboard
 
-In addition to the MySQL analysis, this project includes a Power BI dashboard. The dashboard serves as an intuitive interface, enabling visual exploration and interaction with the analyzed data. It provides deeper insights into employee attrition patterns. Access the dashboard directly [here](https://1drv.ms/u/c/cedd82c7fa907987/ETPTUyBkXKNImS0pfEQsHREB2d5uYjp725ZFOkLItaDvHw?e=nBXIHh).
+In addition to the MySQL analysis, this project includes a Power BI dashboard. The dashboard serves as an intuitive interface, enabling visual exploration and interaction with the analyzed data. It provides deeper insights into employee attrition patterns. Access the dashboard directly [here]
+(https://www.novypro.com/project/hr-analytics-114).
