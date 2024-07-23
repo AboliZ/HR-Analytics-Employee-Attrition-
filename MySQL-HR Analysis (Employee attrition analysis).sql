@@ -3,18 +3,18 @@
 
 
 #Q1.What is the Attrition rate for the entire company?
-
-select count(*)as Total_employees,
-sum(case when attrition = 'Yes' then 1 else 0 end)as Attrition_count,
-(sum(case when attrition = 'Yes' then 1 else 0 end)/count(*))*100 as Attrition_percentage
-from `hr analysis`;
+select tot_count,attrition_count,
+(attrition_count/tot_count)*100 as attrition_rate
+from
+(select sum(case when attrition ='yes' then 1 else 0 end)as attrition_count,count(*)as tot_count
+from hranalysis)as sub;
 
 -- Create a view that includes the attrition rate
 use hranalysis;
 
 create view EmployeeAttrition as
 select *, (case when Attrition = 'Yes' then 1 else 0 end) * 100 as AttritionRate
-from `hr analysis`;
+from hranalysis;
 
 #Q2.What is the attrition rate by department?
 
@@ -105,7 +105,28 @@ avg(AttritionRate) as AvgAttritionRate
 from EmployeeAttrition
 group by Department;
 
+#13. Which department has the highest average job satisfaction and what factors might contribute to it?
+SELECT department,
+       AVG(jobsatisfaction) AS avg_job_satisfaction,
+       AVG(worklifebalance) AS avg_work_life_balance,
+       AVG(monthlyincome) AS avg_monthly_income,
+       AVG(trainingtimeslastyear) AS avg_training_times_last_year
+FROM hranalysis
+GROUP BY department
+ORDER BY avg_job_satisfaction DESC
+LIMIT 1;
 
+#14. Are there any patterns in employee attrition related to age and years at the company?
+select age,yearsatcompany,attritionrate from employeeattrition
+order by yearsatcompany;
+
+#15. Do employees with higher job involvement levels receive more frequent training?
+
+select jobinvolvement,
+       avg(trainingtimeslastyear) as avg_training_times
+from hranalysis
+group by jobinvolvement
+order by jobinvolvement desc;
 
 
 
